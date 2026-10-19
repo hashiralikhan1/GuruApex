@@ -16,9 +16,9 @@ const contactInfo = [
   {
     icon: EmailIcon,
     title: 'Email Us',
-    value: 'hello@velox.agency',
+    value: 'hello@GuruApex.agency',
     subtitle: 'We reply within 24 hours',
-    href: 'mailto:hello@velox.agency',
+    href: 'mailto:hello@GuruApex.agency',
   },
   {
     icon: PhoneIcon,

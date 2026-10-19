@@ -1,8 +1,8 @@
-# 🚀 Velox Digital Agency
+# 🚀 GuruApex Digital Agency
 
 A modern, fully responsive digital agency website built with cutting-edge technologies. Perfect for agencies, startups, and creative studios looking to establish a professional online presence.
 
-![Velox Digital Agency](./screenshots/app-screenshot.png)
+![GuruApex Digital Agency](./screenshots/app-screenshot.png)
 
 ## ✨ Features
 
@@ -45,8 +45,8 @@ A modern, fully responsive digital agency website built with cutting-edge techno
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/velox-digital-agency.git
-   cd velox-digital-agency
+   git clone https://github.com/your-username/GuruApex-digital-agency.git
+   cd GuruApex-digital-agency
    ```
 
 2. Install dependencies:
@@ -137,5 +137,5 @@ This project is open source and available under the [MIT License](LICENSE).
 ---
 
 <p align="center">
-  Made with ❤️ by Velox Digital Agency
+  Made with ❤️ by GuruApex Digital Agency
 </p>

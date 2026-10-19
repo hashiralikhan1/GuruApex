@@ -1,0 +1,58 @@
+export const services: IService[] = [
+  {
+    id: 1,
+    title: 'Social Media Marketing',
+    slug: 'social-media-marketing',
+    description: 'Build a stronger social presence with platform-specific content, community management, and campaigns designed to grow reach and meaningful engagement.',
+    image: '/icons/content-strategy.png',
+  },
+  {
+    id: 2,
+    title: 'AI Video Production',
+    slug: 'ai-video-production',
+    description: 'Create scroll-stopping AI-assisted videos, short-form content, and ad creatives that help your brand communicate ideas faster.',
+    image: '/icons/ai.png',
+  },
+  {
+    id: 3,
+    title: 'Creative & Branding',
+    slug: 'creative-branding',
+    description: 'Develop a distinctive brand identity with thoughtful visual systems, campaign creative, and consistent design across every touchpoint.',
+    image: '/icons/pantone.png',
+  },
+  {
+    id: 4,
+    title: 'Paid Advertising',
+    slug: 'paid-advertising',
+    description: 'Reach the right audience with data-informed ad campaigns, creative testing, and ongoing optimization focused on your business goals.',
+    image: '/icons/mobile-app.png',
+  },
+  {
+    id: 5,
+    title: 'Web Design & Development',
+    slug: 'web-design-development',
+    description: 'Turn visitors into customers with responsive, accessible websites built around your brand, user experience, and conversion goals.',
+    image: '/icons/mobile-app.png',
+  },
+  {
+    id: 6,
+    title: 'Shopify Store Development',
+    slug: 'shopify-store-development',
+    description: 'Launch or improve your Shopify store with a polished storefront, thoughtful product journeys, and a smoother shopping experience.',
+    image: '/icons/shopping.png',
+  },
+  {
+    id: 7,
+    title: 'SEO Services',
+    slug: 'seo-services',
+    description: 'Improve search visibility through technical SEO, keyword-focused content, on-page optimization, and sustainable organic growth.',
+    image: '/icons/content-strategy.png',
+  },
+  {
+    id: 8,
+    title: 'AI Automation',
+    slug: 'ai-automation',
+    description: 'Reduce repetitive work by connecting tools and automating practical workflows for lead handling, operations, and customer follow-up.',
+    image: '/icons/ai.png',
+  },
+]

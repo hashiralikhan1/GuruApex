@@ -1,0 +1,30 @@
+.toast {
+  position: fixed;
+  z-index: 1000;
+  left: 16px;
+  bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: min(340px, calc(100vw - 32px));
+  padding: 11px 12px;
+  border: 1px solid rgba(124, 58, 237, .16);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .96);
+  box-shadow: 0 12px 36px rgba(30, 20, 50, .14);
+  backdrop-filter: blur(12px);
+  color: #242033;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: opacity 420ms ease, transform 420ms ease, box-shadow 250ms ease;
+}
+.toast:not(.visible) { opacity: 0; pointer-events: none; transform: translateY(12px); }
+.icon { display: grid; flex: 0 0 32px; height: 32px; place-items: center; border-radius: 50%; background: #f0e8ff; color: #7c3aed; font-weight: 900; }
+.copy { display: grid; min-width: 0; flex: 1; gap: 3px; }
+.copy strong, .copy small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.copy strong { font-size: 12px; font-weight: 800; }
+.copy small { color: #625c70; font-size: 11px; }
+.toast button { display: grid; flex: 0 0 25px; height: 25px; place-items: center; border: 0; border-radius: 50%; background: transparent; color: #625c70; font-size: 20px; cursor: pointer; }
+.toast button:hover { background: #f2eef8; }
+@media (prefers-reduced-motion: reduce) { .toast, .toast:not(.visible) { transition: none; transform: none; } }

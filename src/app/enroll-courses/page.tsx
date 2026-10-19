@@ -23,7 +23,7 @@ const modules = [
 
 const faqs = [
   ['Do I need previous video-editing experience?', 'The training is designed to guide beginners through the workflow. A willingness to practice and experiment is important.'],
-  ['Can I learn at my own pace?', 'The course is presented as a self-paced learning experience. Review the lesson access details before enrolling.'],
+  ['Can I learn at my own pace?' , 'The course is presented as a self-paced learning experience. Review the lesson access details before enrolling.'],
   ['What can I use these skills for?', 'You can practice creating content for your own pages or develop sample AI video ads for a portfolio. Client results and income are never guaranteed.'],
   ['Will this guarantee that I earn money?', 'No course can guarantee income. Results depend on your practice, portfolio, offer, market demand, and ability to find clients.'],
 ]

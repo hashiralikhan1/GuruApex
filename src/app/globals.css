@@ -147,20 +147,20 @@ img {
   }
 }
 
-/* Directional reveal motion. Content stays visible even before it enters the viewport. */
+/* Individual text and media reveals: transform/opacity only for smooth compositing. */
 .scroll-reveal {
   opacity: 1;
-  transform: translate3d(0, 18px, 0);
-  transition: transform 780ms cubic-bezier(.2,.7,.2,1);
-  will-change: transform;
+  transform: translate3d(0, 20px, 0);
+  transition: transform 580ms cubic-bezier(.22,1,.36,1), opacity 580ms ease;
+  transition-delay: var(--reveal-delay, 0ms);
 }
-.scroll-reveal.from-left { transform: translate3d(-32px, 0, 0); }
-.scroll-reveal.from-right { transform: translate3d(32px, 0, 0); }
-.scroll-reveal.is-visible { opacity: 1; transform: translate3d(0,0,0); }
+.scroll-reveal.reveal-media { transform: translate3d(0, 25px, 0) scale(.975); }
+.scroll-reveal.is-visible { opacity: 1; transform: translate3d(0,0,0) scale(1); }
+@media (prefers-reduced-motion: no-preference) {
+  .scroll-reveal:not(.is-visible) { opacity: .35; }
+}
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .scroll-reveal, .scroll-reveal.from-left, .scroll-reveal.from-right {
-    opacity: 1; transform: none; transition: none; will-change: auto;
-  }
+  .scroll-reveal, .scroll-reveal.reveal-media { opacity: 1; transform: none; transition: none; }
 }

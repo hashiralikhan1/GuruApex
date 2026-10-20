@@ -23,13 +23,6 @@ export const companyMenus: IMenu[] = [
     ),
   },
   {
-    label: 'Enroll Courses',
-    path: '/enroll-courses',
-    icon: (
-      <Box component={LayersOutlinedIcon} sx={{ width: 20, height: 'auto' }} />
-    ),
-  },
-  {
     label: 'Services',
     path: '/services',
     icon: (

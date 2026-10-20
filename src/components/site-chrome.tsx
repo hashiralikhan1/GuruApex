@@ -4,37 +4,29 @@ import { ReactNode, useEffect } from 'react'
 import { usePathname } from 'next/navigation'
 import Footer from '@/components/footer/footer'
 import AppBar from '@/components/appbar/app-bar'
-import CourseUpdateToast from '@/app/enroll-courses/course-update-toast'
 
 export default function SiteChrome({ children }: { children: ReactNode }) {
   const pathname = usePathname()
-  const isStandalonePage = pathname === '/enroll-courses' || pathname === '/enroll'
 
   useEffect(() => {
-    // Keep all page content readable immediately. Motion changes position only;
-    // it never hides content while waiting for a scroll event.
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    const candidates = Array.from(document.querySelectorAll<HTMLElement>(
-      'section, [data-scroll-reveal]'
-    )).filter(element => {
-      // Animate each section once; nested headings/cards inherit the section motion.
-      return !element.parentElement?.closest('section') && !element.closest('[data-no-reveal]')
+    const selector = 'h1, h2, h3, h4, p, img, picture, figure, [data-scroll-reveal]'
+    const candidates = Array.from(document.querySelectorAll<HTMLElement>(selector)).filter(el => {
+      if (el.closest('[data-no-reveal], header, nav, footer, [role="dialog"]')) return false
+      // Avoid overriding Framer Motion's own transforms or animated ancestors.
+      if (el.closest('[style*="transform"], [style*="opacity"]')) return false
+      if (el.matches('[style*="transform"], [style*="opacity"]')) return false
+      return !el.closest('.scroll-reveal')
     })
-
-    candidates.forEach((element, index) => {
-      if (element.closest('[data-no-reveal]')) return
-      element.classList.add('scroll-reveal')
-      element.classList.remove('from-left', 'from-right')
-      if (index % 2 === 0) element.classList.add('from-left')
-      else element.classList.add('from-right')
-      element.style.transitionDelay = `${(index % 3) * 70}ms`
+    candidates.forEach((el, index) => {
+      el.classList.add('scroll-reveal')
+      el.classList.toggle('reveal-media', el.matches('img, picture, figure'))
+      el.style.setProperty('--reveal-delay', `${Math.min(index % 4, 3) * 65}ms`)
     })
-
     if (reduceMotion || !('IntersectionObserver' in window)) {
-      candidates.forEach(element => element.classList.add('is-visible'))
-      return
+      candidates.forEach(el => el.classList.add('is-visible'))
+      return () => candidates.forEach(el => { el.classList.remove('scroll-reveal', 'reveal-media', 'is-visible'); el.style.removeProperty('--reveal-delay') })
     }
-
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -42,24 +34,25 @@ export default function SiteChrome({ children }: { children: ReactNode }) {
           observer.unobserve(entry.target)
         }
       })
-    }, { threshold: 0.04, rootMargin: '0px 0px -12px 0px' })
-
-    candidates.forEach(element => observer.observe(element))
-    // Anything already on screen should animate immediately on initial load.
-    candidates.forEach(element => {
-      if (element.getBoundingClientRect().top < window.innerHeight * 0.92) {
-        element.classList.add('is-visible')
+    }, { threshold: 0.08, rootMargin: '0px 0px -35px 0px' })
+    candidates.forEach(el => {
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.95) {
+        el.classList.add('is-visible')
+      } else {
+        observer.observe(el)
       }
     })
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+      candidates.forEach(el => { el.classList.remove('scroll-reveal', 'reveal-media', 'is-visible'); el.style.removeProperty('--reveal-delay') })
+    }
   }, [pathname])
 
   return (
     <>
-      {!isStandalonePage && <AppBar />}
+      <AppBar />
       {children}
-      <CourseUpdateToast />
-      {!isStandalonePage && <Footer />}
+      <Footer />
     </>
   )
 }
